@@ -2,6 +2,36 @@ import { Banknote, Box, FileText, Settings, ShoppingCart } from "lucide-react";
 
 import type { ModuloSistema, PerguntaFaq, Plano, VendaExemplo } from "./types";
 
+// Endereço público da landing, base das URLs absolutas de SEO (canonical,
+// Open Graph, sitemap). Em produção, defina NEXT_PUBLIC_SITE_URL.
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3002";
+
+// Textos de busca e compartilhamento. Título até ~60 e descrição até ~160 caracteres.
+export const SEO = {
+  nome: "SIGEM",
+  nomeCompleto: "Sistema Integrado de Gestão Empresarial Modular",
+  titulo: "SIGEM | Sistema de gestão modular para pequenas empresas",
+  descricao:
+    "ERP online para pequenas empresas: PDV com caixa, controle de estoque, contas a pagar e receber e cadastros. Contrate só os módulos que usa.",
+  palavrasChave: [
+    "sistema de gestão para pequenas empresas",
+    "ERP para pequenas empresas",
+    "ERP modular",
+    "ERP online",
+    "sistema PDV",
+    "frente de caixa",
+    "controle de estoque",
+    "contas a pagar e receber",
+    "sistema para loja",
+    "SIGEM",
+  ],
+  imagemAlt:
+    "SIGEM, sistema de gestão modular: cadastros, vendas com PDV, estoque e financeiro",
+  empresa: "SyncForge",
+  // Data da última mudança de conteúdo, usada no sitemap.
+  atualizadoEm: "2026-11-04",
+};
+
 // Endereço do SIGEM-app (login e cadastro). Vazio = mesmo domínio da landing.
 export const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "";
 
@@ -206,6 +236,11 @@ export const PLANOS: Plano[] = [
 ];
 
 export const FAQ: PerguntaFaq[] = [
+  {
+    pergunta: "O que é o SIGEM?",
+    resposta:
+      "O SIGEM é um sistema de gestão empresarial (ERP) online e modular para pequenas e médias empresas. Ele reúne cadastros, vendas com PDV e caixa, controle de estoque e financeiro, e você contrata só os módulos que a sua empresa usa. O lançamento é em 23 de novembro de 2026.",
+  },
   {
     pergunta: "Posso contratar só alguns módulos?",
     resposta:

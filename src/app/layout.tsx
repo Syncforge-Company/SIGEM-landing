@@ -1,5 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans } from "next/font/google";
+
+import { SEO, SITE_URL } from "./utils/constants";
+import { CORES_MARCA } from "./utils/marca";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -8,9 +11,46 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "SIGEM · Sistema Integrado de Gestão Empresarial Modular",
-  description:
-    "Cadastros, vendas, estoque e financeiro num só sistema. Contrate o pacote que sua empresa usa hoje e libere novos módulos quando precisar.",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SEO.titulo, template: `%s | ${SEO.nome}` },
+  description: SEO.descricao,
+  applicationName: SEO.nome,
+  keywords: SEO.palavrasChave,
+  authors: [{ name: SEO.empresa }],
+  creator: SEO.empresa,
+  publisher: SEO.empresa,
+  category: "business",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "/",
+    siteName: SEO.nome,
+    title: SEO.titulo,
+    description: SEO.descricao,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SEO.titulo,
+    description: SEO.descricao,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: { telephone: false, email: false, address: false },
+};
+
+export const viewport: Viewport = {
+  themeColor: CORES_MARCA.brand,
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

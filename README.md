@@ -17,6 +17,8 @@ A landing abre em http://localhost:3002 (o app usa a 3000 e a API a 3001). Usamo
 
 Os links de login e cadastro apontam para o SIGEM-app. Copie `.env.example` para `.env.local` e ajuste `NEXT_PUBLIC_APP_URL` (ex.: `http://localhost:3000`). Sem a variável, os links usam o mesmo domínio da landing.
 
+Em produção, defina `NEXT_PUBLIC_SITE_URL` com o endereço público da landing (ex.: `https://sigem.com.br`): ele é a base do canonical, das imagens de compartilhamento, do `robots.txt` e do `sitemap.xml`.
+
 O botão "Avise-me no lançamento" envia os contatos para o SIGEM-api: ajuste `NEXT_PUBLIC_API_URL` (ex.: `http://localhost:3001`) e, na API, coloque o endereço da landing em `LANDING_URL` para o CORS liberar.
 
 ## Comandos
