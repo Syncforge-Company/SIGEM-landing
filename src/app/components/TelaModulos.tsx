@@ -77,14 +77,14 @@ export function TelaModulos({ compacto = false }: Props) {
       >
         <section className="flex items-end justify-between gap-4">
           <div className="flex flex-col gap-1.5">
-            <h1
+            <p
               className={cn(
                 "m-0 font-extrabold tracking-[-0.5px]",
                 compacto ? "text-[22px]" : "text-[28px]",
               )}
             >
               Bom te ver de novo, <span className="text-brand">Ana</span>
-            </h1>
+            </p>
             <p className="text-body m-0 text-[15px]">
               Escolha um módulo para começar.
             </p>
@@ -104,7 +104,7 @@ export function TelaModulos({ compacto = false }: Props) {
               className="size-5 fill-amber-500 text-amber-500"
               strokeWidth={1.6}
             />
-            <h2 className="m-0 text-lg font-bold">Favoritos</h2>
+            <p className="m-0 text-lg font-bold">Favoritos</p>
           </div>
           <div
             className={cn(
@@ -144,7 +144,7 @@ export function TelaModulos({ compacto = false }: Props) {
           >
             <div className="flex items-center gap-2.5">
               <LayoutGrid className="size-5" strokeWidth={1.8} />
-              <h2 className="m-0 text-lg font-bold">Módulos do sistema</h2>
+              <p className="m-0 text-lg font-bold">Módulos do sistema</p>
               <span className="bg-brand/10 text-brand rounded-full px-2.5 py-1 text-xs font-bold">
                 {MODULOS_SISTEMA.length} módulos
               </span>
@@ -194,7 +194,7 @@ export function TelaModulos({ compacto = false }: Props) {
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-1.5">
-                  <h3 className="m-0 text-lg font-bold">{modulo.nome}</h3>
+                  <p className="m-0 text-lg font-bold">{modulo.nome}</p>
                   <p className="text-body m-0 text-sm leading-[1.45]">
                     {modulo.descricao}
                   </p>

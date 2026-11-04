@@ -9,14 +9,16 @@ export function HeroSection() {
     <section className="flex min-h-[calc(100svh-4rem)] items-center overflow-hidden">
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:py-16">
         <div>
-          <SecaoMarcador>Sistema de gestão modular</SecaoMarcador>
+          {/* O marcador faz parte do h1 para o título da página conter o termo de busca principal. */}
           <h1 className="text-ink text-[2.5rem] leading-[1.05] font-bold tracking-[-0.035em] sm:text-[3.5rem]">
+            <SecaoMarcador as="span">Sistema de gestão modular</SecaoMarcador>
+            <span className="sr-only"> para pequenas empresas: </span>
             Hoje sua empresa precisa <TarefaDigitada />
           </h1>
           <p className="text-body mt-5 max-w-[34rem] text-lg leading-relaxed">
-            O SIGEM reúne cadastros, vendas, estoque e financeiro. Você contrata
-            o pacote que faz sentido agora e libera novos módulos quando a
-            empresa crescer.
+            O SIGEM é um ERP online que reúne cadastros, vendas com PDV,
+            controle de estoque e financeiro. Você contrata o pacote que faz
+            sentido agora e libera novos módulos quando a empresa crescer.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <CtaLink href={landingRoutes.planos}>Ver planos</CtaLink>

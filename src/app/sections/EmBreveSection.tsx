@@ -46,12 +46,12 @@ export function EmBreveSection({ children }: Props) {
         aria-labelledby="em-breve-titulo"
         className="bg-surface/80 absolute inset-0 z-20 flex flex-col items-center justify-center px-4 py-12 text-center backdrop-blur-[3px] sm:px-6"
       >
-        <h1
+        <h2
           id="em-breve-titulo"
           className="text-ink max-w-3xl text-[2.5rem] leading-[1.05] font-bold tracking-[-0.035em] sm:text-[3.5rem]"
         >
           O SIGEM chega em 23 de novembro
-        </h1>
+        </h2>
 
         <p className="text-ink mt-12 mb-6 text-sm font-semibold">
           Tempo até o lançamento
