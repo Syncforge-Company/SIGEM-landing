@@ -2,6 +2,7 @@
 
 import { useEffect, type ReactNode } from "react";
 
+import { AvisoLancamento } from "../components/AvisoLancamento";
 import { ContagemRegressiva } from "../components/ContagemRegressiva";
 import { EM_BREVE_ATIVO, LANCAMENTO_EM } from "../utils/constants";
 import { useAgora } from "../utils/useAgora";
@@ -56,6 +57,10 @@ export function EmBreveSection({ children }: Props) {
           Tempo até o lançamento
         </p>
         <ContagemRegressiva ate={LANCAMENTO_EM} />
+
+        <div className="mt-10">
+          <AvisoLancamento />
+        </div>
       </div>
     </div>
   );

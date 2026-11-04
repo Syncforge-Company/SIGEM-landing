@@ -50,3 +50,7 @@ export type PerguntaFaq = {
   pergunta: string;
   resposta: string;
 };
+
+export type AvisoValores = { nome: string; email: string; whatsapp: string };
+
+export type AvisoErros = Partial<Record<keyof AvisoValores, string>>;
