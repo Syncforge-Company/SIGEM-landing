@@ -6,10 +6,20 @@ import { LandingHeader } from "./sections/LandingHeader";
 import { PlanosSection } from "./sections/PlanosSection";
 import { TelaInicialSection } from "./sections/TelaInicialSection";
 import { VendaIntegradaSection } from "./sections/VendaIntegradaSection";
+import {
+  dadosEstruturados,
+  serializarJsonLd,
+} from "./utils/dadosEstruturados";
 
 export default function Page() {
   return (
     <div className="bg-surface flex min-h-full flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializarJsonLd(dadosEstruturados()),
+        }}
+      />
       <LandingHeader />
       <main className="flex-1">
         <EmBreveSection>
