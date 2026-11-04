@@ -5,6 +5,9 @@ import type { ModuloSistema, PerguntaFaq, Plano, VendaExemplo } from "./types";
 // Endereço do SIGEM-app (login e cadastro). Vazio = mesmo domínio da landing.
 export const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "";
 
+// Endereço do SIGEM-api, usado pelo formulário de aviso de lançamento.
+export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
+
 export const landingRoutes = {
   login: `${APP_URL}/login`,
   comoFunciona: "#como-funciona",
@@ -16,6 +19,33 @@ export const landingRoutes = {
 export const LANCAMENTO_EM = "2026-11-23T00:00:00-04:00";
 // false = mostra a landing direto, sem a tela de "Em breve" (útil para revisar o site).
 export const EM_BREVE_ATIVO = true;
+
+export const TEXTOS_AVISO = {
+  botao: "Avise-me no lançamento",
+  titulo: "Avise-me no lançamento",
+  descricao:
+    "Deixe seu contato e avisamos quando o SIGEM estiver disponível, em 23 de novembro.",
+  nome: "Nome",
+  email: "E-mail",
+  whatsapp: "WhatsApp",
+  opcional: "opcional",
+  placeholderNome: "Seu nome",
+  placeholderEmail: "voce@empresa.com.br",
+  placeholderWhatsapp: "(92) 99123-4567",
+  enviar: "Quero ser avisado",
+  enviando: "Enviando…",
+  privacidade: "Usamos seus dados só para avisar sobre o lançamento.",
+  sucessoTitulo: (nome: string) => `Pronto, ${nome}!`,
+  sucessoTexto: "Você está na lista. Avisamos assim que o SIGEM for lançado.",
+  fechar: "Fechar",
+  erros: {
+    nome: "Informe seu nome.",
+    email: "Informe um e-mail válido.",
+    whatsapp: "Informe o WhatsApp com DDD.",
+    limite: "Muitas tentativas seguidas. Tente de novo em um minuto.",
+    generico: "Não foi possível enviar agora. Tente de novo em instantes.",
+  },
+};
 
 export const NAV_LINKS = [
   { label: "Como funciona", href: landingRoutes.comoFunciona },
