@@ -13,8 +13,8 @@ export function VendaIntegradaSection() {
             </h2>
           </div>
           <p className="text-body max-w-md text-[1.05rem] leading-relaxed lg:justify-self-end">
-            Os módulos conversam entre si. Ninguém precisa lançar a mesma venda
-            no estoque e depois no financeiro.
+            Os módulos conversam entre si: a venda feita no PDV baixa o estoque
+            e lança no financeiro, sem digitar a mesma informação duas vezes.
           </p>
         </div>
 
