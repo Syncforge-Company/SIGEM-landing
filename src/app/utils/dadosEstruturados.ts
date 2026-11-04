@@ -13,6 +13,7 @@ export function dadosEstruturados() {
         "@type": "Organization",
         "@id": empresaId,
         name: SEO.empresa,
+        description: `Empresa que desenvolve o ${SEO.nome}, ${SEO.nomeCompleto}.`,
         logo: `${SITE_URL}/landing/syncforge-logo.png`,
       },
       {
@@ -20,7 +21,7 @@ export function dadosEstruturados() {
         "@id": siteId,
         url: SITE_URL,
         name: SEO.nome,
-        alternateName: SEO.nomeCompleto,
+        alternateName: [SEO.nomeCompleto, SEO.marca],
         description: SEO.descricao,
         inLanguage: "pt-BR",
         publisher: { "@id": empresaId },
@@ -29,7 +30,7 @@ export function dadosEstruturados() {
         "@type": "SoftwareApplication",
         "@id": `${SITE_URL}/#sigem`,
         name: SEO.nome,
-        alternateName: SEO.nomeCompleto,
+        alternateName: [SEO.nomeCompleto, SEO.marca],
         description: SEO.descricao,
         url: SITE_URL,
         image: `${SITE_URL}/opengraph-image`,
@@ -40,6 +41,8 @@ export function dadosEstruturados() {
         featureList: MODULOS_SISTEMA.map(
           ({ nome, descricao }) => `${nome}: ${descricao}`,
         ),
+        author: { "@id": empresaId },
+        creator: { "@id": empresaId },
         publisher: { "@id": empresaId },
       },
       {

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: "/",
-    siteName: SEO.nome,
+    siteName: SEO.marca,
     title: SEO.titulo,
     description: SEO.descricao,
   },

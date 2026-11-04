@@ -5,7 +5,7 @@ import { CORES_MARCA } from "./utils/marca";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${SEO.nome} · ${SEO.nomeCompleto}`,
+    name: `${SEO.marca} · ${SEO.nomeCompleto}`,
     short_name: SEO.nome,
     description: SEO.descricao,
     lang: "pt-BR",
