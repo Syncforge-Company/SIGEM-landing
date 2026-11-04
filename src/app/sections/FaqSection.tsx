@@ -23,7 +23,8 @@ export function FaqSection() {
           </p>
         </div>
 
-        <Accordion className="border-line border-t">
+        {/* hiddenUntilFound mantém as respostas no HTML (buscadores e a busca do navegador encontram) sem mostrá-las fechadas. */}
+        <Accordion hiddenUntilFound className="border-line border-t">
           {FAQ.map(({ pergunta, resposta }) => (
             <AccordionItem
               key={pergunta}

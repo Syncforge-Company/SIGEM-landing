@@ -12,7 +12,7 @@ export const SEO = {
   nomeCompleto: "Sistema Integrado de Gestão Empresarial Modular",
   titulo: "SIGEM | Sistema de gestão modular para pequenas empresas",
   descricao:
-    "ERP online para pequenas empresas: PDV com caixa, controle de estoque, contas a pagar e receber e cadastros. Contrate só os módulos que usa.",
+    "ERP online para pequenas empresas: PDV com caixa, controle de estoque, contas a pagar e receber e cadastros. Contrate só os módulos que usa. Da SyncForge.",
   palavrasChave: [
     "sistema de gestão para pequenas empresas",
     "ERP para pequenas empresas",
@@ -24,10 +24,16 @@ export const SEO = {
     "contas a pagar e receber",
     "sistema para loja",
     "SIGEM",
+    "SyncForge",
+    "SIGEM by SyncForge",
+    "sistema de gestão SyncForge",
+    "ERP SyncForge",
   ],
   imagemAlt:
-    "SIGEM, sistema de gestão modular: cadastros, vendas com PDV, estoque e financeiro",
+    "SIGEM by SyncForge, sistema de gestão modular: cadastros, vendas com PDV, estoque e financeiro",
   empresa: "SyncForge",
+  // Marca do produto como aparece no compartilhamento e nos dados estruturados.
+  marca: "SIGEM by SyncForge",
   // Data da última mudança de conteúdo, usada no sitemap.
   atualizadoEm: "2026-11-04",
 };
@@ -240,6 +246,11 @@ export const FAQ: PerguntaFaq[] = [
     pergunta: "O que é o SIGEM?",
     resposta:
       "O SIGEM é um sistema de gestão empresarial (ERP) online e modular para pequenas e médias empresas. Ele reúne cadastros, vendas com PDV e caixa, controle de estoque e financeiro, e você contrata só os módulos que a sua empresa usa. O lançamento é em 23 de novembro de 2026.",
+  },
+  {
+    pergunta: "Quem desenvolve o SIGEM?",
+    resposta:
+      "O SIGEM é um produto da SyncForge. A SyncForge desenvolve o sistema e libera os módulos que cada empresa contrata.",
   },
   {
     pergunta: "Posso contratar só alguns módulos?",
