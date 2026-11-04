@@ -8,9 +8,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing pública do SIGEM (Sistema Integrado de Gestão Empresarial Modular), em Next.js 16 (App Router), React 19, Tailwind 4 e shadcn sobre Base UI. Saiu do `SIGEM-app` para um repo próprio e é o submódulo `landing/` do repo agregador `SIGEM`. O sistema logado fica no `SIGEM-app` e a API no `SIGEM-api`.
 
-**Estado atual:** página única com contagem "Em breve" até 23/11/2026, seções em `src/app/sections`, cópias de componentes da Magic UI em `src/app/components`, `components/ui` só com `button` e `accordion`, e o protótipo HTML da tela de módulos em `public/prototypes`. Os tokens da marca (`ink`, `brand`, `surface`, `highlight`…) estão no `@theme` de `globals.css`. Preços dos pacotes ainda **não definidos** (`precoMensal: null`).
+**Estado atual:** página única com contagem "Em breve" até 23/11/2026, seções em `src/app/sections`, cópias de componentes da Magic UI em `src/app/components`, `components/ui` com `button`, `accordion`, `dialog`, `input` e `label`, e o protótipo HTML da tela de módulos em `public/prototypes`. Os tokens da marca (`ink`, `brand`, `surface`, `highlight`…) estão no `@theme` de `globals.css`. Preços dos pacotes ainda **não definidos** (`precoMensal: null`).
 
 Login e cadastro apontam para o app via `NEXT_PUBLIC_APP_URL` (`APP_URL` em `utils/constants.ts`).
+
+O botão "Avise-me no lançamento", embaixo da contagem, abre um modal (`components/AvisoLancamento.tsx`) que envia nome, e-mail e WhatsApp opcional para `POST /avisos-lancamento` do `SIGEM-api`, no endereço de `NEXT_PUBLIC_API_URL` (`API_URL` em `utils/constants.ts`; chamada em `utils/api.ts`). Os textos ficam em `TEXTOS_AVISO`. A API precisa ter a origem da landing em `LANDING_URL` para o CORS liberar.
 
 ## Comandos
 
