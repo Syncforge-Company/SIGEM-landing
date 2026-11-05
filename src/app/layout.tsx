@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans } from "next/font/google";
 
-import { SEO, SITE_URL } from "./utils/constants";
+import { INDEXAVEL, SEO, SITE_URL } from "./utils/constants";
 import { CORES_MARCA } from "./utils/marca";
 import "./globals.css";
 
@@ -35,11 +35,11 @@ export const metadata: Metadata = {
     description: SEO.descricao,
   },
   robots: {
-    index: true,
-    follow: true,
+    index: INDEXAVEL,
+    follow: INDEXAVEL,
     googleBot: {
-      index: true,
-      follow: true,
+      index: INDEXAVEL,
+      follow: INDEXAVEL,
       "max-image-preview": "large",
       "max-snippet": -1,
       "max-video-preview": -1,
