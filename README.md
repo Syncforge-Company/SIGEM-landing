@@ -48,9 +48,29 @@ src/
 └── lib/utils.ts                        # cn
 ```
 
-- A contagem "Em breve" vai até `LANCAMENTO_EM` (23/11/2026). `EM_BREVE_ATIVO = false` mostra a landing direto.
+- A contagem "Em breve" vai até `LANCAMENTO_EM` (23/11/2026) e é ligada por ambiente com `NEXT_PUBLIC_LAUNCH_COUNTDOWN_ENABLED` (veja "Ambientes").
 - Os preços dos pacotes ainda não estão definidos (`precoMensal: null`).
 - O protótipo em `public/prototypes` é referência de design, não código: sirva a pasta (`python3 -m http.server`) e abra `Main.dc.html`.
+
+## Ambientes
+
+| Ambiente | Branch | Na Vercel | Contagem "Em breve" | Para quê |
+|---|---|---|---|---|
+| Produção | `main` | Production | Ligada (`true`) | Site público |
+| Desenvolvimento e homologação | `dev` (e previews de PR) | Preview, com endereço fixo para a `dev` | Desligada (`false`) | Trabalhar no layout e a Alessandra testar antes de ir para produção |
+| Local | qualquer | `.env.local` | Desligada (`false`) | `pnpm dev` |
+
+**Fluxo:** `feature` → PR para `dev` (homologação, a Alessandra testa) → depois do OK, PR de `dev` para `main` (produção). Correção urgente sai da `main` e volta para a `dev`.
+
+**Variáveis por ambiente:** cada ambiente tem um arquivo de exemplo, só de referência (o Next não carrega esses arquivos):
+
+- `.env.example` → copie para `.env.local` (desenvolvimento local);
+- `.env.development.example` → Vercel, ambiente **Preview** (vale para a `dev` e os previews de PR);
+- `.env.production.example` → Vercel, ambiente **Production**.
+
+`NEXT_PUBLIC_LAUNCH_COUNTDOWN_ENABLED=false` mostra a landing direto. Qualquer outro valor, ou a variável ausente, mantém a contagem ligada: esquecer a variável em produção nunca expõe o site antes do lançamento. Variáveis `NEXT_PUBLIC_*` entram no build, então mudar o valor na Vercel exige um novo deploy.
+
+**Endereço da homologação:** em Vercel → Settings → Domains, adicione um domínio (ex.: `dev.sigem…` ou um `*.vercel.app`) e associe-o à branch `dev` (Git Branch). Esse é o link da Alessandra; use-o em `NEXT_PUBLIC_SITE_URL` da dev e em `LANDING_URL` da API de homologação.
 
 ## Padrões
 
