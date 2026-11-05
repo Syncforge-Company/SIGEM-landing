@@ -10,7 +10,7 @@ Landing pública do SIGEM (Sistema Integrado de Gestão Empresarial Modular), em
 
 **Estado atual:** página única com contagem "Em breve" até 23/11/2026, seções em `src/app/sections`, cópias de componentes da Magic UI em `src/app/components`, `components/ui` com `button`, `accordion`, `dialog`, `input` e `label`, e o protótipo HTML da tela de módulos em `public/prototypes`. Os tokens da marca (`ink`, `brand`, `surface`, `highlight`…) estão no `@theme` de `globals.css`. Preços dos pacotes ainda **não definidos** (`precoMensal: null`).
 
-**Ambientes:** `main` = produção, `staging` = homologação (Alessandra), `dev` = desenvolvimento; fluxo `dev` → `staging` → `main`. A contagem "Em breve" é ligada por `NEXT_PUBLIC_LAUNCH_COUNTDOWN_ENABLED` (`EM_BREVE_ATIVO` em `utils/constants.ts`): só `false` desliga, ausente fica ligada. Os valores de cada ambiente estão em `.env.example` (local), `.env.development.example`, `.env.staging.example` e `.env.production.example`, e são aplicados na Vercel. Não volte a ligar ou desligar a contagem editando o código.
+**Ambientes:** `main` = produção e `dev` = desenvolvimento e homologação (a Alessandra testa na `dev`); fluxo `feature` → `dev` → `main`. A contagem "Em breve" é ligada por `NEXT_PUBLIC_LAUNCH_COUNTDOWN_ENABLED` (`EM_BREVE_ATIVO` em `utils/constants.ts`): só `false` desliga, ausente fica ligada. Os valores de cada ambiente estão em `.env.example` (local), `.env.development.example` (Preview, inclui a `dev`) e `.env.production.example`, e são aplicados na Vercel. Não volte a ligar ou desligar a contagem editando o código.
 
 Login e cadastro apontam para o app via `NEXT_PUBLIC_APP_URL` (`APP_URL` em `utils/constants.ts`).
 

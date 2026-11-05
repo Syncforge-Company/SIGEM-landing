@@ -57,22 +57,20 @@ src/
 | Ambiente | Branch | Na Vercel | Contagem "Em breve" | Para quê |
 |---|---|---|---|---|
 | Produção | `main` | Production | Ligada (`true`) | Site público |
-| Homologação | `staging` | Preview, só a branch `staging`, com endereço fixo | Ligada (`true`) | A Alessandra testa exatamente o que vai subir |
-| Desenvolvimento | `dev` e PRs | Preview (todas as branches) | Desligada (`false`) | Trabalhar no layout sem a contagem |
+| Desenvolvimento e homologação | `dev` (e previews de PR) | Preview, com endereço fixo para a `dev` | Desligada (`false`) | Trabalhar no layout e a Alessandra testar antes de ir para produção |
 | Local | qualquer | `.env.local` | Desligada (`false`) | `pnpm dev` |
 
-**Fluxo:** `feature` → PR para `dev` → PR de `dev` para `staging` (homologação) → depois do OK, PR de `staging` para `main` (produção). Correção urgente sai da `main` e volta para `staging` e `dev`.
+**Fluxo:** `feature` → PR para `dev` (homologação, a Alessandra testa) → depois do OK, PR de `dev` para `main` (produção). Correção urgente sai da `main` e volta para a `dev`.
 
 **Variáveis por ambiente:** cada ambiente tem um arquivo de exemplo, só de referência (o Next não carrega esses arquivos):
 
 - `.env.example` → copie para `.env.local` (desenvolvimento local);
-- `.env.development.example` → Vercel, ambiente **Preview** (todas as branches);
-- `.env.staging.example` → Vercel, ambiente **Preview** com a branch **`staging`** selecionada; vale por cima dos valores gerais de Preview;
+- `.env.development.example` → Vercel, ambiente **Preview** (vale para a `dev` e os previews de PR);
 - `.env.production.example` → Vercel, ambiente **Production**.
 
 `NEXT_PUBLIC_LAUNCH_COUNTDOWN_ENABLED=false` mostra a landing direto. Qualquer outro valor, ou a variável ausente, mantém a contagem ligada: esquecer a variável em produção nunca expõe o site antes do lançamento. Variáveis `NEXT_PUBLIC_*` entram no build, então mudar o valor na Vercel exige um novo deploy.
 
-**Endereço da homologação:** em Vercel → Settings → Domains, adicione um domínio (ex.: `homolog.sigem…` ou um `*.vercel.app`) e associe-o à branch `staging` (Git Branch). Use esse endereço em `NEXT_PUBLIC_SITE_URL` da staging e em `LANDING_URL` da API de homologação.
+**Endereço da homologação:** em Vercel → Settings → Domains, adicione um domínio (ex.: `dev.sigem…` ou um `*.vercel.app`) e associe-o à branch `dev` (Git Branch). Esse é o link da Alessandra; use-o em `NEXT_PUBLIC_SITE_URL` da dev e em `LANDING_URL` da API de homologação.
 
 ## Padrões
 
