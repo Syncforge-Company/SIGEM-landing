@@ -1,11 +1,11 @@
 import { ImageResponse } from "next/og";
 
-import { SIMBOLO } from "./utils/marca";
+import { SimboloSigem } from "./utils/marca";
 
 export const size = { width: 512, height: 512 };
 export const contentType = "image/png";
 
-// Favicon da aba: só o ícone, com fundo transparente.
+// Favicon da aba: só o símbolo, com fundo transparente.
 export default function Icon() {
   return new ImageResponse(
     (
@@ -18,12 +18,7 @@ export default function Icon() {
           justifyContent: "center",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse não aceita next/image */}
-        <img
-          src={SIMBOLO}
-          alt=""
-          style={{ width: 480, height: (480 * 330) / 331, display: "block" }}
-        />
+        <SimboloSigem largura={480} />
       </div>
     ),
     size,

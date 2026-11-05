@@ -1,31 +1,95 @@
-// Marca do SIGEM (o ícone em SVG dos assets de /logos) para imagens geradas com
-// next/og. Essas imagens não leem o CSS nem servem arquivos do site, então o SVG
-// entra embutido como data URL e as cores vêm de CORES_MARCA, com os mesmos
-// valores dos tokens de globals.css.
+// Marca do SIGEM para as imagens geradas com next/og (ícones e imagem de
+// compartilhamento). Essas imagens não leem o CSS nem os arquivos do site, então
+// tudo é lido no build a partir das fontes oficiais:
+// - cores: tokens do @theme em globals.css (fonte única da paleta);
+// - símbolo: public/logos/sigem-icone.svg, embutido como data URL.
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-export const CORES_MARCA = {
-  brand: "#176b61",
-  brandStrong: "#123c3a",
-  brandLight: "#2cbfae",
-  onDeep: "#f4f7f6",
-  ink: "#123c3a",
-  body: "#45605d",
-  surface: "#f4f7f6",
-  line: "#dce9e4",
-  highlight: "#d9f2e9",
-};
+// Cores
+// -----------------------------------------------------------------------------
 
-export const SIMBOLO = `data:image/svg+xml;base64,${Buffer.from(
-  readFileSync(
-    join(process.cwd(), "public", "logos", "sigem-icone.svg"),
-  ),
-).toString("base64")}`;
+// Nome usado no código → token de globals.css. Os valores vêm sempre do CSS.
+const TOKENS_MARCA = {
+  ink: "--color-ink",
+  body: "--color-body",
+  brand: "--color-brand",
+  brandStrong: "--color-brand-strong",
+  brandLight: "--color-brand-light",
+  surface: "--color-surface",
+  line: "--color-line",
+  highlight: "--color-highlight",
+  onDeep: "--color-on-deep",
+} as const;
 
-type Props = { tamanho: number; cantoReto?: boolean };
+type CorMarca = keyof typeof TOKENS_MARCA;
 
-export function MarcaSigem({ tamanho, cantoReto = false }: Props) {
+function lerCoresDoTema(): Record<CorMarca, string> {
+  const css = readFileSync(join(process.cwd(), "src/app/globals.css"), "utf8");
+  // Só o bloco `@theme {`, onde ficam os valores; o `@theme inline` só referencia variáveis.
+  const tema = css.match(/@theme\s*\{([\s\S]*?)\n\}/)?.[1] ?? "";
+  const valores = new Map(
+    [...tema.matchAll(/(--color-[\w-]+)\s*:\s*([^;]+);/g)].map(
+      ([, token, valor]) => [token, valor.trim()],
+    ),
+  );
+
+  return Object.fromEntries(
+    Object.entries(TOKENS_MARCA).map(([cor, token]) => {
+      const valor = valores.get(token);
+      if (!valor) {
+        throw new Error(`Token ${token} não encontrado no @theme de globals.css.`);
+      }
+      return [cor, valor];
+    }),
+  ) as Record<CorMarca, string>;
+}
+
+export const CORES_MARCA = lerCoresDoTema();
+
+// Símbolo
+// -----------------------------------------------------------------------------
+
+const SVG_SIMBOLO = readFileSync(
+  join(process.cwd(), "public/logos/sigem-icone.svg"),
+);
+
+export const SIMBOLO = `data:image/svg+xml;base64,${SVG_SIMBOLO.toString("base64")}`;
+
+// Altura ÷ largura do símbolo, tirada do viewBox do próprio SVG.
+const [, , larguraSvg, alturaSvg] =
+  SVG_SIMBOLO.toString("utf8")
+    .match(/viewBox="([^"]+)"/)?.[1]
+    .split(/\s+/)
+    .map(Number) ?? [];
+
+export const PROPORCAO_SIMBOLO = alturaSvg / larguraSvg;
+
+type SimboloProps = { largura: number };
+
+// O símbolo como fundo de uma div: o ImageResponse desenha sem precisar de <img>.
+export function SimboloSigem({ largura }: SimboloProps) {
+  return (
+    <div
+      style={{
+        width: largura,
+        height: largura * PROPORCAO_SIMBOLO,
+        display: "flex",
+        backgroundImage: `url(${SIMBOLO})`,
+        backgroundSize: "100% 100%",
+        backgroundRepeat: "no-repeat",
+      }}
+    />
+  );
+}
+
+// Marca
+// -----------------------------------------------------------------------------
+
+type MarcaProps = { tamanho: number; cantoReto?: boolean };
+
+// Símbolo centralizado num quadrado com o fundo da landing.
+export function MarcaSigem({ tamanho, cantoReto = false }: MarcaProps) {
   const margem = tamanho * 0.12;
 
   return (
@@ -40,16 +104,7 @@ export function MarcaSigem({ tamanho, cantoReto = false }: Props) {
         borderRadius: cantoReto ? 0 : tamanho * 0.22,
       }}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse não aceita next/image */}
-      <img
-        src={SIMBOLO}
-        alt=""
-        style={{
-          width: tamanho - margem * 2,
-          height: ((tamanho - margem * 2) * 330) / 331,
-          display: "block",
-        }}
-      />
+      <SimboloSigem largura={tamanho - margem * 2} />
     </div>
   );
 }
