@@ -53,8 +53,12 @@ export const landingRoutes = {
 
 // Fim da contagem do "Em breve": meia-noite de 23/11/2026, horário de Manaus (UTC−4).
 export const LANCAMENTO_EM = "2026-11-23T00:00:00-04:00";
-// false = mostra a landing direto, sem a tela de "Em breve" (útil para revisar o site).
-export const EM_BREVE_ATIVO = false;
+// Liga a tela de "Em breve" por ambiente, sem editar código:
+// NEXT_PUBLIC_LAUNCH_COUNTDOWN_ENABLED=false mostra a landing direto (dev);
+// qualquer outro valor, ou a variável ausente, mantém a contagem ligada. Assim,
+// esquecer a variável em produção nunca expõe o site antes do lançamento.
+export const EM_BREVE_ATIVO =
+  process.env.NEXT_PUBLIC_LAUNCH_COUNTDOWN_ENABLED !== "false";
 
 export const TEXTOS_AVISO = {
   botao: "Avise-me no lançamento",
