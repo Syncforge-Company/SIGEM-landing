@@ -54,7 +54,7 @@ export const landingRoutes = {
 // Fim da contagem do "Em breve": meia-noite de 23/11/2026, horário de Manaus (UTC−4).
 export const LANCAMENTO_EM = "2026-11-23T00:00:00-04:00";
 // false = mostra a landing direto, sem a tela de "Em breve" (útil para revisar o site).
-export const EM_BREVE_ATIVO = true;
+export const EM_BREVE_ATIVO = false;
 
 export const TEXTOS_AVISO = {
   botao: "Avise-me no lançamento",
@@ -146,9 +146,9 @@ export const MODULOS_SISTEMA: ModuloSistema[] = [
 
 // Cores dos feixes do hero: mesmos valores de --color-brand-light, --color-brand e --color-ink.
 export const CORES_FEIXE = {
-  inicio: "#34d399",
-  fim: "#047857",
-  trilha: "#0b1430",
+  inicio: "#2cbfae",
+  fim: "#176b61",
+  trilha: "#123c3a",
 };
 
 // Fluxo real do PDV (api/docs/database.md §3), com dados de exemplo.

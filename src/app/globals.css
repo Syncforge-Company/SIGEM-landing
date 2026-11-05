@@ -6,22 +6,22 @@
 
 /* Paleta SIGEM, a partir do protótipo da tela de módulos: verde como marca, fundo claro. */
 @theme {
-  --color-ink: #0b1430;
-  --color-body: #4b5675;
-  --color-subtle: #7a849e;
-  --color-brand: #047857;
-  --color-brand-strong: #065f46;
-  --color-brand-light: #34d399;
-  --color-surface: #f3f5fa;
-  --color-surface-alt: #eef1f7;
+  --color-ink: #123c3a;
+  --color-body: #45605d;
+  --color-subtle: #7d9491;
+  --color-brand: #176b61;
+  --color-brand-strong: #123c3a;
+  --color-brand-light: #2cbfae;
+  --color-surface: #f4f7f6;
+  --color-surface-alt: #e9f2ef;
   --color-surface-card: #ffffff;
-  --color-line: #e3e8f2;
-  --color-highlight: #e3f6ec;
-  --color-highlight-ink: #065f46;
-  --color-deep-line: #0b6b52;
-  --color-on-deep: #f0fdf7;
-  --color-on-deep-muted: #b7e4d2;
-  --color-on-deep-label: #6ee7b7;
+  --color-line: #dce9e4;
+  --color-highlight: #d9f2e9;
+  --color-highlight-ink: #176b61;
+  --color-deep-line: #176b61;
+  --color-on-deep: #f4f7f6;
+  --color-on-deep-muted: #d9f2e9;
+  --color-on-deep-label: #2cbfae;
 
   --animate-blink-cursor: blink-cursor 1.2s step-end infinite;
 
@@ -42,8 +42,8 @@
   background:
     radial-gradient(
       circle at 85% 0%,
-      rgb(52 211 153 / 0.35),
-      rgb(52 211 153 / 0) 60%
+      rgb(44 191 174 / 0.35),
+      rgb(44 191 174 / 0) 60%
     ),
     var(--color-brand-strong);
 }
@@ -98,7 +98,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #047857;
+  --primary: #176b61;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);

@@ -1,4 +1,4 @@
-import { LayoutGrid } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
@@ -10,14 +10,19 @@ export function Logo({ className }: Props) {
     <Link
       href="/"
       className={cn(
-        "text-ink focus-visible:ring-ring/50 inline-flex items-center gap-2.5 rounded-lg outline-none focus-visible:ring-3",
+        "focus-visible:ring-ring/50 inline-flex items-center rounded-lg outline-none focus-visible:ring-3",
         className,
       )}
     >
-      <span className="bg-brand text-on-deep flex size-8 items-center justify-center rounded-[10px]">
-        <LayoutGrid aria-hidden className="size-[18px]" strokeWidth={2} />
-      </span>
-      <span className="text-lg font-bold tracking-[-0.02em]">SIGEM</span>
+      <Image
+        src="/logos/sigem-logo.svg"
+        alt="SIGEM by SyncForge"
+        width={1414}
+        height={330}
+        priority
+        unoptimized
+        className="h-8 w-auto"
+      />
     </Link>
   );
 }

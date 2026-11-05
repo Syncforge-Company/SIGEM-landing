@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutGrid } from "lucide-react";
+import Image from "next/image";
 import { useReducedMotion } from "motion/react";
 import { forwardRef, useRef, type RefObject } from "react";
 
@@ -16,7 +16,7 @@ const NoModulo = forwardRef<HTMLDivElement, { modulo: ModuloSistema }>(
     return (
       <div
         ref={ref}
-        className="border-line bg-surface-card relative z-10 flex w-[92px] flex-col items-center gap-2 rounded-2xl border p-3 text-center shadow-[0_10px_30px_-18px_rgb(11_20_48/0.45)] sm:w-[204px] sm:flex-row sm:text-left"
+        className="border-line bg-surface-card relative z-10 flex w-[92px] flex-col items-center gap-2 rounded-2xl border p-3 text-center shadow-[0_10px_30px_-18px_rgb(18_60_58/0.45)] sm:w-[204px] sm:flex-row sm:text-left"
       >
         <ModuloIcone
           modulo={modulo}
@@ -89,10 +89,16 @@ export function ModulosConectados() {
 
       <div
         ref={centro}
-        className="bg-deep-glow text-on-deep relative z-10 flex size-[92px] flex-col items-center justify-center gap-1 rounded-[26px] shadow-[0_24px_50px_-20px_rgb(6_95_70/0.7)] sm:size-[112px]"
+        className="bg-deep-glow relative z-10 flex rounded-[24px] p-3.5 shadow-[0_24px_50px_-20px_rgb(18_60_58/0.7)] sm:p-4"
       >
-        <LayoutGrid className="size-7" strokeWidth={1.8} />
-        <span className="text-sm font-bold tracking-[-0.01em]">SIGEM</span>
+        <Image
+          src="/logos/sigem-logo-branco.svg"
+          alt=""
+          width={1414}
+          height={330}
+          unoptimized
+          className="h-6 w-auto sm:h-8"
+        />
       </div>
 
       <div className="flex flex-col gap-16 sm:gap-20">
