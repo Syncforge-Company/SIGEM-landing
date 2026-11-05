@@ -29,7 +29,7 @@ export function EtapaModulo({
         className={cn(
           "bg-surface-card flex flex-col rounded-[20px] border transition-[opacity,border-color,box-shadow] duration-500",
           ativo
-            ? "border-brand-light/70 shadow-[0_24px_50px_-30px_rgb(4_120_87/0.55)]"
+            ? "border-brand-light/70 shadow-[0_24px_50px_-30px_rgb(23_107_97/0.55)]"
             : "border-line opacity-60",
         )}
       >

@@ -34,14 +34,14 @@ export function TelaInicialSection() {
         >
           <Safari
             url="app.sigem.com.br/inicio"
-            className="rounded-xl shadow-[0_30px_70px_-35px_rgb(11_20_48/0.45)]"
+            className="rounded-xl shadow-[0_30px_70px_-35px_rgb(18_60_58/0.45)]"
           >
             <TelaEscalonada {...DESKTOP}>
               <TelaModulos />
             </TelaEscalonada>
           </Safari>
 
-          <div className="absolute right-3 -bottom-4 w-[30%] origin-bottom rotate-[7deg] max-w-[190px] min-w-[120px] drop-shadow-[0_24px_40px_rgb(11_20_48/0.3)] sm:right-[8%] lg:-bottom-12">
+          <div className="absolute right-3 -bottom-4 w-[30%] origin-bottom rotate-[7deg] max-w-[190px] min-w-[120px] drop-shadow-[0_24px_40px_rgb(18_60_58/0.3)] sm:right-[8%] lg:-bottom-12">
             <Iphone>
               <TelaEscalonada {...CELULAR}>
                 <TelaModulos compacto />

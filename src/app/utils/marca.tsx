@@ -1,24 +1,32 @@
-// Marca do SIGEM (quadrado verde com a grade de módulos) para imagens geradas
-// com next/og. Essas imagens não leem o CSS do site, então as cores vêm daqui,
-// com os mesmos valores dos tokens de globals.css.
+// Marca do SIGEM (o ícone em SVG dos assets de /logos) para imagens geradas com
+// next/og. Essas imagens não leem o CSS nem servem arquivos do site, então o SVG
+// entra embutido como data URL e as cores vêm de CORES_MARCA, com os mesmos
+// valores dos tokens de globals.css.
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
 export const CORES_MARCA = {
-  brand: "#047857",
-  brandStrong: "#065f46",
-  brandLight: "#34d399",
-  onDeep: "#f0fdf7",
-  ink: "#0b1430",
-  body: "#4b5675",
-  surface: "#f3f5fa",
-  line: "#e3e8f2",
-  highlight: "#e3f6ec",
+  brand: "#176b61",
+  brandStrong: "#123c3a",
+  brandLight: "#2cbfae",
+  onDeep: "#f4f7f6",
+  ink: "#123c3a",
+  body: "#45605d",
+  surface: "#f4f7f6",
+  line: "#dce9e4",
+  highlight: "#d9f2e9",
 };
+
+export const SIMBOLO = `data:image/svg+xml;base64,${Buffer.from(
+  readFileSync(
+    join(process.cwd(), "public", "logos", "sigem-icone.svg"),
+  ),
+).toString("base64")}`;
 
 type Props = { tamanho: number; cantoReto?: boolean };
 
 export function MarcaSigem({ tamanho, cantoReto = false }: Props) {
-  const quadrado = tamanho * 0.23;
-  const espaco = tamanho * 0.086;
-  const borda = Math.max(2, tamanho * 0.055);
+  const margem = tamanho * 0.12;
 
   return (
     <div
@@ -26,26 +34,22 @@ export function MarcaSigem({ tamanho, cantoReto = false }: Props) {
         width: tamanho,
         height: tamanho,
         display: "flex",
-        flexWrap: "wrap",
-        alignContent: "center",
+        alignItems: "center",
         justifyContent: "center",
-        gap: espaco,
-        padding: (tamanho - (2 * quadrado + espaco)) / 2,
-        background: CORES_MARCA.brand,
-        borderRadius: cantoReto ? 0 : tamanho * 0.25,
+        background: CORES_MARCA.surface,
+        borderRadius: cantoReto ? 0 : tamanho * 0.22,
       }}
     >
-      {[0, 1, 2, 3].map((i) => (
-        <div
-          key={i}
-          style={{
-            width: quadrado,
-            height: quadrado,
-            border: `${borda}px solid ${CORES_MARCA.onDeep}`,
-            borderRadius: quadrado * 0.24,
-          }}
-        />
-      ))}
+      {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse não aceita next/image */}
+      <img
+        src={SIMBOLO}
+        alt=""
+        style={{
+          width: tamanho - margem * 2,
+          height: ((tamanho - margem * 2) * 330) / 331,
+          display: "block",
+        }}
+      />
     </div>
   );
 }

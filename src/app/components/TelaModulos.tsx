@@ -117,7 +117,7 @@ export function TelaModulos({ compacto = false }: Props) {
             {FAVORITOS.map((modulo) => (
               <div
                 key={modulo.id}
-                className="border-line flex items-center gap-4 rounded-2xl border bg-white px-5 py-[18px] shadow-[0_1px_2px_rgb(11_20_48/0.04)]"
+                className="border-line flex items-center gap-4 rounded-2xl border bg-white px-5 py-[18px] shadow-[0_1px_2px_rgb(18_60_58/0.04)]"
               >
                 <ModuloIcone
                   modulo={modulo}
@@ -173,7 +173,7 @@ export function TelaModulos({ compacto = false }: Props) {
               <div
                 key={modulo.id}
                 className={cn(
-                  "border-line flex flex-col rounded-[18px] border bg-white shadow-[0_1px_2px_rgb(11_20_48/0.04)]",
+                  "border-line flex flex-col rounded-[18px] border bg-white shadow-[0_1px_2px_rgb(18_60_58/0.04)]",
                   compacto ? "gap-3 p-4" : "min-h-[196px] gap-[18px] p-[22px]",
                 )}
               >
