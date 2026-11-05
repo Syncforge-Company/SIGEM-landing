@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, ChevronRight } from "lucide-react";
-import { useInView, useReducedMotion } from "motion/react";
+import { useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -12,6 +12,7 @@ import {
   VENDA_EXEMPLO,
 } from "../utils/constants";
 import { formatarPreco, totalDaVenda } from "../utils/functions";
+import { useReduzirMovimento } from "../utils/useReduzirMovimento";
 import { AnimatedList } from "./AnimatedList";
 import { EtapaModulo } from "./EtapaModulo";
 import { NumberTicker } from "./NumberTicker";
@@ -46,7 +47,7 @@ function Conector({ ativo }: { ativo: boolean }) {
 export function FluxoVenda() {
   const ref = useRef<HTMLOListElement>(null);
   const visivel = useInView(ref, { once: true, amount: 0.4 });
-  const reduzirMovimento = useReducedMotion();
+  const reduzirMovimento = useReduzirMovimento();
   const [etapaAnimada, setEtapaAnimada] = useState(0);
   const etapa = reduzirMovimento ? 3 : etapaAnimada;
 

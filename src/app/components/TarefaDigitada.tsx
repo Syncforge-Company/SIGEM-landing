@@ -1,12 +1,11 @@
 "use client";
 
-import { useReducedMotion } from "motion/react";
-
 import { TAREFAS_DIGITADAS } from "../utils/constants";
+import { useReduzirMovimento } from "../utils/useReduzirMovimento";
 import { TypingAnimation } from "./TypingAnimation";
 
 export function TarefaDigitada() {
-  const reduzirMovimento = useReducedMotion();
+  const reduzirMovimento = useReduzirMovimento();
 
   return (
     <>

@@ -1,19 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import { FRASE_HEADLINE } from "../utils/constants";
+import { useMontado } from "../utils/useMontado";
 import { TypingAnimation } from "./TypingAnimation";
 
 // Headline com a primeira parte fixa e a segunda digitada em loop. O servidor
 // renderiza a frase inteira e a animação começa depois de montar, para o
 // primeiro render bater entre servidor e cliente.
 export function FraseDigitada() {
-  const [montado, setMontado] = useState(false);
-
-  useEffect(() => {
-    setMontado(true);
-  }, []);
+  const montado = useMontado();
 
   return (
     <>
