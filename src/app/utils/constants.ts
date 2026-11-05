@@ -6,6 +6,13 @@ import type { ModuloSistema, PerguntaFaq, Plano, VendaExemplo } from "./types";
 // Open Graph, sitemap). Em produção, defina NEXT_PUBLIC_SITE_URL.
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3002";
 
+// Só a produção pode ser indexada. VERCEL_ENV é preenchida pela Vercel em cada
+// deploy ("production", "preview" ou "development"); fora da Vercel, indexa.
+// Assim a dev (homologação) e os previews de PR não concorrem com o site no Google.
+export const INDEXAVEL = process.env.VERCEL_ENV
+  ? process.env.VERCEL_ENV === "production"
+  : true;
+
 // Textos de busca e compartilhamento. Título até ~60 e descrição até ~160 caracteres.
 export const SEO = {
   nome: "SIGEM",

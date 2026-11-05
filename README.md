@@ -70,6 +70,10 @@ src/
 
 `NEXT_PUBLIC_LAUNCH_COUNTDOWN_ENABLED=false` mostra a landing direto. Qualquer outro valor, ou a variável ausente, mantém a contagem ligada: esquecer a variável em produção nunca expõe o site antes do lançamento. Variáveis `NEXT_PUBLIC_*` entram no build, então mudar o valor na Vercel exige um novo deploy.
 
+**Indexação:** só a produção aparece no Google. Na `dev` e nos previews (onde a Vercel define `VERCEL_ENV=preview`), a página publica `noindex` e o `robots.txt` bloqueia todos os robôs. Nada a configurar.
+
+**Branch `main` protegida:** só o Davi pode enviar commits ou fazer merge de PR na `main` (regra do GitHub, vale também para admins). O caminho normal é PR para a `dev` e, depois da homologação, o Davi leva a `dev` para a `main`.
+
 **Endereço da homologação:** em Vercel → Settings → Domains, adicione um domínio (ex.: `dev.sigem…` ou um `*.vercel.app`) e associe-o à branch `dev` (Git Branch). Esse é o link da Alessandra; use-o em `NEXT_PUBLIC_SITE_URL` da dev e em `LANDING_URL` da API de homologação.
 
 ## Padrões
