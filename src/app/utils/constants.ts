@@ -96,6 +96,13 @@ export const TAREFAS_DIGITADAS = [
   "cobrar quem deve.",
 ];
 
+// Frase da headline: a parte fixa é estática; só a segunda parte é digitada,
+// apagada e repetida em loop.
+export const FRASE_HEADLINE = {
+  fixa: "Sua empresa funciona melhor",
+  digitada: "quando tudo está conectado.",
+};
+
 // Os quatro módulos da tela inicial, com os textos e cores do protótipo
 // (public/prototypes/Tela de módulos-html).
 export const MODULOS_SISTEMA: ModuloSistema[] = [
